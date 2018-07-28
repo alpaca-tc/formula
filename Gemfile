@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 gem 'pry'
 gem 'racc'
+gem 'rake'
+gem 'guard-shell'
 
 gem 'guard'
 gem 'guard-rspec'

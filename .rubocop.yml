@@ -6,6 +6,7 @@ AllCops:
     - '**/Rakefile'
     - '**/config.ru'
     - 'node_modules/**/*'
+    - 'lib/mf_formula/parser.rb'
   TargetRubyVersion: 2.5
   DisplayCopNames: true
 
