@@ -105,6 +105,26 @@ RSpec.describe AlpacaFormula::Scanner do
           )
         end
       end
+
+      context 'given shorthund syntax' do
+        let(:text) { '(1++2--0)/3' }
+
+        it do
+          is_expected.to eq(
+            [
+              [:LPAREN, '('],
+              [:DIGIT, '1'],
+              [:OPERATOR, '+'],
+              [:DIGIT, '+2'],
+              [:OPERATOR, '-'],
+              [:DIGIT, '-0'],
+              [:RPAREN, ')'],
+              [:OPERATOR, '/'],
+              [:DIGIT, '3']
+            ]
+          )
+        end
+      end
     end
   end
 end
