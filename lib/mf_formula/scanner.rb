@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module MfFormula
+  # rubocop:disable all
   class Scanner
     def scan_setup(str)
       @string_scanner = StringScanner.new(str)
@@ -20,8 +21,6 @@ module MfFormula
 
     def next_token
       return if @string_scanner.eos?
-
-      # rubocop:disable Lint/AssignmentInCondition
       until token = scan || @string_scanner.eos?
         # Do nothing
       end
@@ -32,33 +31,22 @@ module MfFormula
 
     private
 
-    # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/PerceivedComplexity
     def scan
-      if @string_scanner.scan(%r{/})
-        [:SLASH, @string_scanner.matched]
-      elsif @string_scanner.scan(/\*\w+/)
-        [:STAR, @string_scanner.matched]
+      if @string_scanner.scan(/(?:\p{Hiragana}|\p{Katakana}|[一-龠々]|[（）])+/)
+        [:SYMBOL, @string_scanner.matched]
       elsif @string_scanner.scan(/(?<!\\)\(/)
         [:LPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?<!\\)\)/)
         [:RPAREN, @string_scanner.matched]
-      elsif @string_scanner.scan(/\|/)
-        [:OR, @string_scanner.matched]
-      elsif @string_scanner.scan(/\./)
-        [:DOT, @string_scanner.matched]
-      elsif @string_scanner.scan(/(?<!\\):\w+/)
-        [:SYMBOL, @string_scanner.matched]
+      elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
+        [:LITERAL, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[\w%\-~!$&'*+,;=@]|\\:|\\\(|\\\))+/)
         [:LITERAL, @string_scanner.matched.tr('\\', '')]
-        # any char
       elsif @string_scanner.scan(/./)
+        # any char
         [:LITERAL, @string_scanner.matched]
       end
     end
-    # rubocop:enable Metrics/AbcSize
-    # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/PerceivedComplexity
   end
+  # rubocop:enable all
 end
