@@ -24,7 +24,7 @@ RSpec.describe MfFormula::Scanner do
 
       context 'given symbol' do
         let(:text) { '基本給（月給）' }
-        it { is_expected.to eq([[:SYMBOL, '基本給（月給）']]) }
+        it { is_expected.to eq([[:ITEM, '基本給（月給）']]) }
       end
 
       context 'given signed value' do
@@ -33,9 +33,9 @@ RSpec.describe MfFormula::Scanner do
         it do
           is_expected.to eq(
             [
-              [:LITERAL, '+1'],
+              [:DIGIT, '+1'],
               [:SIGN, '+'],
-              [:LITERAL, '-2']
+              [:DIGIT, '-2']
             ]
           )
         end
@@ -46,15 +46,15 @@ RSpec.describe MfFormula::Scanner do
         it do
           is_expected.to eq(
             [
-              [:LITERAL, '1.0'],
+              [:DIGIT, '1.0'],
               [:LITERAL, ' '],
               [:SIGN, '+'],
               [:LITERAL, ' '],
-              [:LITERAL, '0.12345'],
+              [:DIGIT, '0.12345'],
               [:LITERAL, ' '],
               [:SIGN, '-'],
               [:LITERAL, ' '],
-              [:LITERAL, '-1.0']
+              [:DIGIT, '-1.0']
             ]
           )
         end
@@ -66,23 +66,23 @@ RSpec.describe MfFormula::Scanner do
         it do
           is_expected.to eq(
             [
-              [:LITERAL, '1'],
+              [:DIGIT, '1'],
               [:LITERAL, ' '],
               [:SIGN, '+'],
               [:LITERAL, ' '],
-              [:LITERAL, '2'],
+              [:DIGIT, '2'],
               [:LITERAL, ' '],
               [:SIGN, '-'],
               [:LITERAL, ' '],
-              [:LITERAL, '3'],
+              [:DIGIT, '3'],
               [:LITERAL, ' '],
               [:SIGN, '*'],
               [:LITERAL, ' '],
-              [:LITERAL, '123456789'],
+              [:DIGIT, '123456789'],
               [:LITERAL, ' '],
               [:SIGN, '/'],
               [:LITERAL, ' '],
-              [:LITERAL, '1']
+              [:DIGIT, '1']
             ]
           )
         end
@@ -95,11 +95,11 @@ RSpec.describe MfFormula::Scanner do
           is_expected.to eq(
             [
               [:LPAREN, '('],
-              [:LITERAL, '1'],
+              [:DIGIT, '1'],
               [:LITERAL, ' '],
               [:SIGN, '+'],
               [:LITERAL, ' '],
-              [:LITERAL, '2'],
+              [:DIGIT, '2'],
               [:RPAREN, ')']
             ]
           )
