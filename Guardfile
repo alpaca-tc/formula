@@ -51,7 +51,7 @@ guard :rubocop, all_on_start: false, cli: ['--auto-correct'] do
 end
 
 guard :shell do
-  watch('lib/mf_formula/parser.y') do
+  watch('lib/alpaca_formula/parser.y') do
     `bundle exec rake compile`
   end
 end

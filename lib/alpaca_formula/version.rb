@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module MfFormula
+module AlpacaFormula
   VERSION = '0.1.0'
 end

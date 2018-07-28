@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe MfFormula do
+RSpec.describe AlpacaFormula do
   it 'has a version number' do
-    expect(MfFormula::VERSION).not_to be nil
+    expect(AlpacaFormula::VERSION).not_to be nil
   end
 
   it 'does something useful' do

@@ -7,8 +7,8 @@
 require 'racc/parser.rb'
 
 
-require 'mf_formula/parser_extras'
-module MfFormula
+require 'alpaca_formula/parser_extras'
+module AlpacaFormula
   class Parser < Racc::Parser
 ##### State transition tables begin ###
 
@@ -133,11 +133,11 @@ Racc_debug_parser = false
 # reduce 0 omitted
 
 def _reduce_1(val, _values)
- Nodes::Cat.new(val.first, val.last) 
+ Nodes::Cat.new(val.first, val.last)
 end
 
 def _reduce_2(val, _values)
- val.first 
+ val.first
 end
 
 # reduce 3 omitted
@@ -147,17 +147,17 @@ end
 # reduce 5 omitted
 
 def _reduce_6(val, _values)
- Nodes::Group.new(val[1]) 
+ Nodes::Group.new(val[1])
 end
 
 def _reduce_7(val, _values)
- Nodes::Cat.new(val[0], val[1], val[2]) 
+ Nodes::Cat.new(val[0], val[1], val[2])
 end
 
 # reduce 8 omitted
 
 def _reduce_9(val, _values)
- Nodes::Operator.new(val.first) 
+ Nodes::Operator.new(val.first)
 end
 
 # reduce 10 omitted
@@ -167,15 +167,15 @@ end
 # reduce 12 omitted
 
 def _reduce_13(val, _values)
- Nodes::Item.new(val.first) 
+ Nodes::Item.new(val.first)
 end
 
 def _reduce_14(val, _values)
- Nodes::Digit.new(val.first) 
+ Nodes::Digit.new(val.first)
 end
 
 def _reduce_15(val, _values)
- Nodes::Literal.new(val.first) 
+ Nodes::Literal.new(val.first)
 end
 
 def _reduce_none(val, _values)
@@ -183,4 +183,4 @@ def _reduce_none(val, _values)
 end
 
   end   # class Parser
-  end   # module MfFormula
+  end   # module AlpacaFormula

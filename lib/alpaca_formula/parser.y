@@ -1,4 +1,4 @@
-class MfFormula::Parser
+class AlpacaFormula::Parser
 
 options no_result_var
 
@@ -46,4 +46,4 @@ end
 
 ---- header
 
-require 'mf_formula/parser_extras'
+require 'alpaca_formula/parser_extras'

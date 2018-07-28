@@ -2,11 +2,11 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mf_formula/version'
+require 'alpaca_formula/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'mf_formula'
-  spec.version       = MfFormula::VERSION
+  spec.name          = 'alpaca_formula'
+  spec.version       = AlpacaFormula::VERSION
   spec.authors       = ['alpaca-tc']
   spec.email         = ['alpaca-tc@alpaca.tc']
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MfFormula
+module AlpacaFormula
   class Parser < Racc::Parser
     def self.parse(string)
       new.parse(string)

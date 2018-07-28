@@ -2,7 +2,7 @@
 
 require 'bigdecimal'
 
-module MfFormula
+module AlpacaFormula
   class Visitor
     def initialize(context)
       @context = context

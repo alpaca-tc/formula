@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MfFormula
+module AlpacaFormula
   module Nodes
     ##
     # Abstract classes

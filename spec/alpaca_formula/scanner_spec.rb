@@ -2,7 +2,7 @@
 
 # (基本給(月給) + 管理職手当 + 技術管理手当) / 所定労働日数 * (生理休暇 + 休職日数 + 欠勤日数) * -1
 
-RSpec.describe MfFormula::Scanner do
+RSpec.describe AlpacaFormula::Scanner do
   describe 'ClassMethods' do
     describe '#next_token' do
       subject { tokens }

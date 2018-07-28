@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MfFormula
+module AlpacaFormula
   class Scanner
     def scan_setup(str)
       @string_scanner = StringScanner.new(str)
