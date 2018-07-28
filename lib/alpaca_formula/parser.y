@@ -11,7 +11,6 @@ preclow
 
 rule
   expressions
-    : expression expressions                { Nodes::Cat.new(val.first, val.last) }
     | expression                            { val.first }
     ;
   expression

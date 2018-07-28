@@ -14,36 +14,32 @@ module AlpacaFormula
     ##### State transition tables begin ###
 
     racc_action_table = [
-      10, 11, 15, 12, 6, 10, 11, 18, 12, 6,
-      10, 11, 13, 12, 6, 15, 15, 10, 11, 15,
-      12, 6, 20
+      10, 11, 13,    12, 6, 17, 15, 10, 11, 15,
+      12, 6, 10, 11, 15, 12, 6, 19
     ]
 
     racc_action_check = [
-      2,     2,    19, 2, 2, 0, 0, 13, 0, 0,
-      6,     6, 1, 6, 6, 16, 1, 14, 14, 17,
-      14,    14, 17
+      0, 0, 1, 0, 0,    13, 1, 6, 6, 18,
+      6, 6, 14, 14, 16, 14, 14, 16
     ]
 
     racc_action_pointer = [
-      3, 12, -2, nil, nil, nil, 8,   nil, nil, nil,
-      nil, nil, nil, 7, 15, nil, 11, 15, nil, -2,
-      nil
+      -2, 2, nil, nil, nil, nil, 5, nil, nil, nil,
+      nil, nil,   nil, 5, 10, nil, 10, nil, 5, nil
     ]
 
     racc_action_default = [
-      -8, -16, -2, -3, -4, -5, -8, -10, -11, -12,
-      -13, -14, -15, -16, -8, -9, -1, -16, 21, -7,
-      -6
+      -1, -16, -2, -3, -4, -5, -1, -10, -11, -12,
+      -13, -14, -15, -16, -1, -9, -16, 20, -7, -6
     ]
 
     racc_goto_table = [
-      1, nil, 16, nil, nil, nil, 17, nil, nil, nil,
-      nil, nil,   nil, nil, 19
+      1, nil, nil,   nil, nil, nil, 16, nil, nil, nil,
+      nil, nil, nil, nil, 18
     ]
 
     racc_goto_check = [
-      1, nil, 1, nil, nil, nil, 1, nil, nil, nil,
+      1, nil, nil, nil,   nil, nil, 1, nil, nil, nil,
       nil, nil, nil, nil, 1
     ]
 
@@ -57,7 +53,7 @@ module AlpacaFormula
 
     racc_reduce_table = [
       0, 0, :racc_error,
-      2, 13, :_reduce_1,
+      0, 13, :_reduce_none,
       1, 13, :_reduce_2,
       1, 14, :_reduce_none,
       1, 14, :_reduce_none,
@@ -76,7 +72,7 @@ module AlpacaFormula
 
     racc_reduce_n = 16
 
-    racc_shift_n = 21
+    racc_shift_n = 20
 
     racc_token_table = {
       false => 0,
@@ -145,9 +141,7 @@ module AlpacaFormula
 
     # reduce 0 omitted
 
-    def _reduce_1(val, _values)
-      Nodes::Cat.new(val.first, val.last)
-    end
+    # reduce 1 omitted
 
     def _reduce_2(val, _values)
       val.first
