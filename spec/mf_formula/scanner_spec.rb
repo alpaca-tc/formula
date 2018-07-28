@@ -28,15 +28,13 @@ RSpec.describe MfFormula::Scanner do
       end
 
       context 'given signed value' do
-        let(:text) { '+1 + -2' }
+        let(:text) { '+1+-2' }
 
         it do
           is_expected.to eq(
             [
               [:LITERAL, '+1'],
-              [:LITERAL, ' '],
-              [:LITERAL, '+'],
-              [:LITERAL, ' '],
+              [:SIGN, '+'],
               [:LITERAL, '-2']
             ]
           )
@@ -50,11 +48,11 @@ RSpec.describe MfFormula::Scanner do
             [
               [:LITERAL, '1.0'],
               [:LITERAL, ' '],
-              [:LITERAL, '+'],
+              [:SIGN, '+'],
               [:LITERAL, ' '],
               [:LITERAL, '0.12345'],
               [:LITERAL, ' '],
-              [:LITERAL, '-'],
+              [:SIGN, '-'],
               [:LITERAL, ' '],
               [:LITERAL, '-1.0']
             ]
@@ -70,19 +68,19 @@ RSpec.describe MfFormula::Scanner do
             [
               [:LITERAL, '1'],
               [:LITERAL, ' '],
-              [:LITERAL, '+'],
+              [:SIGN, '+'],
               [:LITERAL, ' '],
               [:LITERAL, '2'],
               [:LITERAL, ' '],
-              [:LITERAL, '-'],
+              [:SIGN, '-'],
               [:LITERAL, ' '],
               [:LITERAL, '3'],
               [:LITERAL, ' '],
-              [:LITERAL, '*'],
+              [:SIGN, '*'],
               [:LITERAL, ' '],
               [:LITERAL, '123456789'],
               [:LITERAL, ' '],
-              [:LITERAL, '/'],
+              [:SIGN, '/'],
               [:LITERAL, ' '],
               [:LITERAL, '1']
             ]
@@ -99,7 +97,7 @@ RSpec.describe MfFormula::Scanner do
               [:LPAREN, '('],
               [:LITERAL, '1'],
               [:LITERAL, ' '],
-              [:LITERAL, '+'],
+              [:SIGN, '+'],
               [:LITERAL, ' '],
               [:LITERAL, '2'],
               [:RPAREN, ')']

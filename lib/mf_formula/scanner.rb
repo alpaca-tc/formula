@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module MfFormula
-  # rubocop:disable all
   class Scanner
     def scan_setup(str)
       @string_scanner = StringScanner.new(str)
@@ -24,7 +23,6 @@ module MfFormula
       until token = scan || @string_scanner.eos?
         # Do nothing
       end
-      # rubocop:enable Lint/AssignmentInCondition
 
       token
     end
@@ -40,6 +38,8 @@ module MfFormula
         [:RPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
         [:LITERAL, @string_scanner.matched]
+      elsif @string_scanner.scan(/(?:[+*\/\-])(?<!\d)/)
+        [:SIGN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[\w%\-~!$&'*+,;=@]|\\:|\\\(|\\\))+/)
         [:LITERAL, @string_scanner.matched.tr('\\', '')]
       elsif @string_scanner.scan(/./)
@@ -48,5 +48,4 @@ module MfFormula
       end
     end
   end
-  # rubocop:enable all
 end
