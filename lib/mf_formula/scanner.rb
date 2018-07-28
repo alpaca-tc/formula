@@ -37,7 +37,7 @@ module MfFormula
       elsif @string_scanner.scan(/(?<!\\)\)/)
         [:RPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[+*\/\-])(?!\d)/)
-        [:SIGN, @string_scanner.matched]
+        [:OPERATOR, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
         [:DIGIT, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[\w%\-~!$&'*+,;=@]|\\:|\\\(|\\\))+/)

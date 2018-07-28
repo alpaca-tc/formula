@@ -34,7 +34,7 @@ RSpec.describe MfFormula::Scanner do
           is_expected.to eq(
             [
               [:DIGIT, '+1'],
-              [:SIGN, '+'],
+              [:OPERATOR, '+'],
               [:DIGIT, '-2']
             ]
           )
@@ -48,11 +48,11 @@ RSpec.describe MfFormula::Scanner do
             [
               [:DIGIT, '1.0'],
               [:LITERAL, ' '],
-              [:SIGN, '+'],
+              [:OPERATOR, '+'],
               [:LITERAL, ' '],
               [:DIGIT, '0.12345'],
               [:LITERAL, ' '],
-              [:SIGN, '-'],
+              [:OPERATOR, '-'],
               [:LITERAL, ' '],
               [:DIGIT, '-1.0']
             ]
@@ -68,19 +68,19 @@ RSpec.describe MfFormula::Scanner do
             [
               [:DIGIT, '1'],
               [:LITERAL, ' '],
-              [:SIGN, '+'],
+              [:OPERATOR, '+'],
               [:LITERAL, ' '],
               [:DIGIT, '2'],
               [:LITERAL, ' '],
-              [:SIGN, '-'],
+              [:OPERATOR, '-'],
               [:LITERAL, ' '],
               [:DIGIT, '3'],
               [:LITERAL, ' '],
-              [:SIGN, '*'],
+              [:OPERATOR, '*'],
               [:LITERAL, ' '],
               [:DIGIT, '123456789'],
               [:LITERAL, ' '],
-              [:SIGN, '/'],
+              [:OPERATOR, '/'],
               [:LITERAL, ' '],
               [:DIGIT, '1']
             ]
@@ -97,7 +97,7 @@ RSpec.describe MfFormula::Scanner do
               [:LPAREN, '('],
               [:DIGIT, '1'],
               [:LITERAL, ' '],
-              [:SIGN, '+'],
+              [:OPERATOR, '+'],
               [:LITERAL, ' '],
               [:DIGIT, '2'],
               [:RPAREN, ')']
