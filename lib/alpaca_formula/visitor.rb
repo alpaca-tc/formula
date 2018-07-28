@@ -46,5 +46,35 @@ module AlpacaFormula
     def visit_DIGIT(node)
       BigDecimal(node.left)
     end
+
+    def visit_IF(node)
+      if visit(node.condition)
+        visit(node.left)
+      else
+        visit(node.right)
+      end
+    end
+
+    def visit_CONDITION(node)
+      left = visit(node.left)
+      right = visit(node.right)
+
+      case node.expression.left
+      when '<'
+        left < right
+      when '>'
+        left > right
+      when '<='
+        left <= right
+      when '>='
+        left >= right
+      when '=='
+        left == right
+      when '!='
+        left != right
+      else
+        raise NotImplementedError, "unknown expression given (#{node.expression.left})"
+      end
+    end
   end
 end

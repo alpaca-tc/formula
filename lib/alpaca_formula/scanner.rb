@@ -32,12 +32,18 @@ module AlpacaFormula
     def scan
       if @string_scanner.scan(/(?:\p{Hiragana}|\p{Katakana}|[一-龠々]|[（）])+/)
         [:ITEM, @string_scanner.matched]
+      elsif @string_scanner.scan(/(?<!\\)IF/)
+        [:IF, @string_scanner.matched]
+      elsif @string_scanner.scan(/(?<!\\),/)
+        [:DELIMITER, @string_scanner.matched]
       elsif @string_scanner.scan(/(?<!\\)\(/)
         [:LPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?<!\\)\)/)
         [:RPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:(?:[+\-])(?!\d)|[*\/])/)
         [:OPERATOR, @string_scanner.matched]
+      elsif @string_scanner.scan(/(==|!=|>|<|>=|<=)/)
+        [:COMPARISON_OPERATOR, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
         [:DIGIT, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[\w%\-~!$&'*+,;=@]|\\:|\\\(|\\\))+/)

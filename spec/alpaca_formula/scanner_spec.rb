@@ -125,6 +125,43 @@ RSpec.describe AlpacaFormula::Scanner do
           )
         end
       end
+
+      context 'given sign' do
+        let(:text) { ',' }
+
+        it do
+          is_expected.to eq(
+            [
+              [:DELIMITER, ',']
+            ]
+          )
+        end
+      end
+
+      fcontext 'given IF' do
+        let(:text) { 'IF(基本給 > 0, 1.0, 2.0)' }
+
+        it do
+          is_expected.to eq(
+            [
+              [:IF, 'IF'],
+              [:LPAREN, '('],
+              [:ITEM, '基本給'],
+              [:LITERAL, ' '],
+              [:COMPARISON_OPERATOR, '>'],
+              [:LITERAL, ' '],
+              [:DIGIT, '0'],
+              [:DELIMITER, ','],
+              [:LITERAL, ' '],
+              [:DIGIT, '1.0'],
+              [:DELIMITER, ','],
+              [:LITERAL, ' '],
+              [:DIGIT, '2.0'],
+              [:RPAREN, ')']
+            ]
+          )
+        end
+      end
     end
   end
 end

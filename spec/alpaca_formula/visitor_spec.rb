@@ -41,7 +41,8 @@ RSpec.describe AlpacaFormula::Visitor do
     end
 
     let(:node) { AlpacaFormula::Parser.parse(text) }
-    let(:text) { '(基本給（月給）+管理職手当+技術管理手当)/所定労働日数*(生理休暇+休職日数+欠勤日数)*-1' }
+    # let(:text) { '(基本給（月給）+管理職手当+技術管理手当)/所定労働日数*(生理休暇+休職日数+欠勤日数)*-1' }
+    let(:text) { 'IF(基本給（月給）> 100000, 100, 200)' }
     it { pp subject }
   end
 end

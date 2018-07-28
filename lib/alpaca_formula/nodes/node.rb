@@ -29,6 +29,16 @@ module AlpacaFormula
       end
     end
 
+    class Branch < Node
+      attr_reader :condition, :right
+
+      def initialize(condition, left, right)
+        super(left)
+        @condition = condition
+        @right = right
+      end
+    end
+
     class Binary < Node
       attr_reader :right, :expression
 
@@ -95,12 +105,31 @@ module AlpacaFormula
       end
     end
 
+    # FIXME: ComparisonOperator毎に別クラスに切るべき？そもそもこれ、Terminalなの？
+    class ComparisonOperator < Terminal
+      def type
+        :COMPARISON_OPERATOR
+      end
+    end
+
     ##
     # Binary classes
     ##
     class Cat < Binary
       def type
         :CAT
+      end
+    end
+
+    class Condition < Binary
+      def type
+        :CONDITION
+      end
+    end
+
+    class If < Branch
+      def type
+        :IF
       end
     end
 
