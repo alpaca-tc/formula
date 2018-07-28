@@ -1,45 +1,46 @@
 class MfFormula::Parser
-  options no_result_var
-token SLASH LITERAL SYMBOL LPAREN RPAREN DOT STAR OR
+
+options no_result_var
+
+token ITEM DIGIT OPERATOR LITERAL LPAREN RPAREN
+
+prechigh
+  left '*' '/'
+  left '+' '-'
+preclow
 
 rule
   expressions
-    : expression expressions  { Cat.new(val.first, val.last) }
-    | expression              { val.first }
-    | or
+    : expression expressions                { Nodes::Cat.new(val.first, val.last) }
+    | expression                            { val.first }
     ;
   expression
     : terminal
     | group
-    | star
+    | calculation
     ;
   group
-    : LPAREN expressions RPAREN { Group.new(val[1]) }
+    : LPAREN expressions RPAREN             { Nodes::Group.new(val[1]) }
     ;
-  or
-    : expression OR expression { Or.new([val.first, val.last]) }
-    | expression OR or { Or.new([val.first, val.last]) }
-    ;
-  star
-    : STAR       { Star.new(Symbol.new(val.last)) }
+  calculation
+    : expressions operator expressions      { Nodes::Cat.new(val[0], val[1], val[2]) }
+    |
+  operator
+    : OPERATOR                              { Nodes::Operator.new(val.first) }
     ;
   terminal
-    : symbol
-    | literal
-    | slash
-    | dot
+    : literal
+    | item
+    | digit
     ;
-  slash
-    : SLASH              { Slash.new('/') }
+  item
+    : ITEM                                  { Nodes::Item.new(val.first) }
     ;
-  symbol
-    : SYMBOL             { Symbol.new(val.first) }
+  digit
+    : DIGIT                                 { Nodes::Digit.new(val.first) }
     ;
   literal
-    : LITERAL            { Literal.new(val.first) }
-    ;
-  dot
-    : DOT                { Dot.new(val.first) }
+    : LITERAL                               { Nodes::Literal.new(val.first) }
     ;
 end
 

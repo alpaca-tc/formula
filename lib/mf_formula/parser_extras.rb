@@ -16,7 +16,20 @@ module MfFormula
     end
 
     def next_token
-      @scanner.next_token
+      return if @scanner.eos?
+
+      loop do
+        token = @scanner.next_token
+        return if token.nil?
+        return token unless skip_token?(token)
+      end
+    end
+
+    private
+
+    def skip_token?(token)
+      # 空白はいらないので消す
+      token[0] == :LITERAL && token[1] == ' '
     end
   end
 end

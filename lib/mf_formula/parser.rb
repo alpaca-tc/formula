@@ -13,77 +13,76 @@ module MfFormula
 ##### State transition tables begin ###
 
 racc_action_table = [
-    13,    15,    14,     7,    19,    16,     8,    19,    13,    15,
-    14,     7,    17,    16,     8,    13,    15,    14,     7,    21,
-    16,     8,    13,    15,    14,     7,    24,    16,     8 ]
+    10,    11,    15,    12,     6,    10,    11,    18,    12,     6,
+    10,    11,    13,    12,     6,    15,    15,    10,    11,    15,
+    12,     6,    20 ]
 
 racc_action_check = [
-     2,     2,     2,     2,    22,     2,     2,     2,    19,    19,
-    19,    19,     1,    19,    19,     7,     7,     7,     7,    17,
-     7,     7,     0,     0,     0,     0,    20,     0,     0 ]
+     2,     2,    19,     2,     2,     0,     0,    13,     0,     0,
+     6,     6,     1,     6,     6,    16,     1,    14,    14,    17,
+    14,    14,    17 ]
 
 racc_action_pointer = [
-    20,    12,    -2,   nil,   nil,   nil,   nil,    13,   nil,   nil,
-   nil,   nil,   nil,   nil,   nil,   nil,   nil,    19,   nil,     6,
-    20,   nil,    -5,   nil,   nil ]
-
-racc_action_default = [
-   -19,   -19,    -2,    -3,    -4,    -5,    -6,   -19,   -10,   -11,
-   -12,   -13,   -14,   -15,   -16,   -17,   -18,   -19,    -1,   -19,
-   -19,    25,    -8,    -9,    -7 ]
-
-racc_goto_table = [
-     1,    22,    18,    23,   nil,   nil,   nil,    20 ]
-
-racc_goto_check = [
-     1,     2,     1,     3,   nil,   nil,   nil,     1 ]
-
-racc_goto_pointer = [
-   nil,     0,   -18,   -16,   nil,   nil,   nil,   nil,   nil,   nil,
+     3,    12,    -2,   nil,   nil,   nil,     8,   nil,   nil,   nil,
+   nil,   nil,   nil,     7,    15,   nil,    11,    15,   nil,    -2,
    nil ]
 
+racc_action_default = [
+    -8,   -16,    -2,    -3,    -4,    -5,    -8,   -10,   -11,   -12,
+   -13,   -14,   -15,   -16,    -8,    -9,    -1,   -16,    21,    -7,
+    -6 ]
+
+racc_goto_table = [
+     1,   nil,    16,   nil,   nil,   nil,    17,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,    19 ]
+
+racc_goto_check = [
+     1,   nil,     1,   nil,   nil,   nil,     1,   nil,   nil,   nil,
+   nil,   nil,   nil,   nil,     1 ]
+
+racc_goto_pointer = [
+   nil,     0,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil ]
+
 racc_goto_default = [
-   nil,   nil,     2,     3,     4,     5,     6,     9,    10,    11,
-    12 ]
+   nil,   nil,     2,     3,     4,     5,    14,     7,     8,     9 ]
 
 racc_reduce_table = [
   0, 0, :racc_error,
-  2, 11, :_reduce_1,
-  1, 11, :_reduce_2,
-  1, 11, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  1, 12, :_reduce_none,
-  3, 15, :_reduce_7,
-  3, 13, :_reduce_8,
-  3, 13, :_reduce_9,
-  1, 16, :_reduce_10,
+  2, 13, :_reduce_1,
+  1, 13, :_reduce_2,
   1, 14, :_reduce_none,
   1, 14, :_reduce_none,
   1, 14, :_reduce_none,
-  1, 14, :_reduce_none,
-  1, 19, :_reduce_15,
-  1, 17, :_reduce_16,
-  1, 18, :_reduce_17,
-  1, 20, :_reduce_18 ]
+  3, 16, :_reduce_6,
+  3, 17, :_reduce_7,
+  0, 17, :_reduce_none,
+  1, 18, :_reduce_9,
+  1, 15, :_reduce_none,
+  1, 15, :_reduce_none,
+  1, 15, :_reduce_none,
+  1, 20, :_reduce_13,
+  1, 21, :_reduce_14,
+  1, 19, :_reduce_15 ]
 
-racc_reduce_n = 19
+racc_reduce_n = 16
 
-racc_shift_n = 25
+racc_shift_n = 21
 
 racc_token_table = {
   false => 0,
   :error => 1,
-  :SLASH => 2,
-  :LITERAL => 3,
-  :SYMBOL => 4,
-  :LPAREN => 5,
-  :RPAREN => 6,
-  :DOT => 7,
-  :STAR => 8,
-  :OR => 9 }
+  :ITEM => 2,
+  :DIGIT => 3,
+  :OPERATOR => 4,
+  :LITERAL => 5,
+  :LPAREN => 6,
+  :RPAREN => 7,
+  "*" => 8,
+  "/" => 9,
+  "+" => 10,
+  "-" => 11 }
 
-racc_nt_base = 10
+racc_nt_base = 12
 
 racc_use_result_var = false
 
@@ -106,25 +105,26 @@ Racc_arg = [
 Racc_token_to_s_table = [
   "$end",
   "error",
-  "SLASH",
+  "ITEM",
+  "DIGIT",
+  "OPERATOR",
   "LITERAL",
-  "SYMBOL",
   "LPAREN",
   "RPAREN",
-  "DOT",
-  "STAR",
-  "OR",
+  "\"*\"",
+  "\"/\"",
+  "\"+\"",
+  "\"-\"",
   "$start",
   "expressions",
   "expression",
-  "or",
   "terminal",
   "group",
-  "star",
-  "symbol",
+  "calculation",
+  "operator",
   "literal",
-  "slash",
-  "dot" ]
+  "item",
+  "digit" ]
 
 Racc_debug_parser = false
 
@@ -133,7 +133,7 @@ Racc_debug_parser = false
 # reduce 0 omitted
 
 def _reduce_1(val, _values)
- Cat.new(val.first, val.last) 
+ Nodes::Cat.new(val.first, val.last) 
 end
 
 def _reduce_2(val, _values)
@@ -146,46 +146,36 @@ end
 
 # reduce 5 omitted
 
-# reduce 6 omitted
+def _reduce_6(val, _values)
+ Nodes::Group.new(val[1]) 
+end
 
 def _reduce_7(val, _values)
- Group.new(val[1]) 
+ Nodes::Cat.new(val[0], val[1], val[2]) 
 end
 
-def _reduce_8(val, _values)
- Or.new([val.first, val.last]) 
-end
+# reduce 8 omitted
 
 def _reduce_9(val, _values)
- Or.new([val.first, val.last]) 
+ Nodes::Operator.new(val.first) 
 end
 
-def _reduce_10(val, _values)
- Star.new(Symbol.new(val.last)) 
-end
+# reduce 10 omitted
 
 # reduce 11 omitted
 
 # reduce 12 omitted
 
-# reduce 13 omitted
+def _reduce_13(val, _values)
+ Nodes::Item.new(val.first) 
+end
 
-# reduce 14 omitted
+def _reduce_14(val, _values)
+ Nodes::Digit.new(val.first) 
+end
 
 def _reduce_15(val, _values)
- Slash.new('/') 
-end
-
-def _reduce_16(val, _values)
- Symbol.new(val.first) 
-end
-
-def _reduce_17(val, _values)
- Literal.new(val.first) 
-end
-
-def _reduce_18(val, _values)
- Dot.new(val.first) 
+ Nodes::Literal.new(val.first) 
 end
 
 def _reduce_none(val, _values)
