@@ -14,83 +14,103 @@ module AlpacaFormula
     ##### State transition tables begin ###
 
     racc_action_table = [
-      7, 14, 27, 11, 12, 16, 13, 6, 18, 7,
-      20, 21, 11,    12,     7, 13, 6, 11, 12, 7,
-      13,     6,    11,    12,     7,    13,     6,    11,    12, 7,
-      13,     6,    11,    12,     7,    13,     6,    11,    12, 16,
-      13,     6,    18,    16, nil, 31, 18, 29, 16, 24,
-      16, 18, 16, 18, 16, 18, nil, 18
+      14, 15, 16,    17, 18,    21, 38,    15, 16, 17,
+      18, 7, 17, 18, 10,    11, 12,    13, 7, 31,
+      6, 10, 11, 12, 13, 7, 20, 6, 10, 11,
+      12, 13, 7, 23, 6, 10, 11, 12, 13, 7,
+      22, 6, 10, 11, 12, 13, 7, nil, 6, 10,
+      11, 12,    13, 7, nil, 6, 10, 11, 12, 13,
+      7, nil, 6,    10,    11,    12, 13,     7, nil, 6,
+      10,    11,    12,    13, 7, nil, 6, 10, 11, 12,
+      13,    36, nil, 6, nil, 15, 16, 17, 18, 33,
+      17,    18, 15, 16, 17, 18, 15, 16, 17, 18,
+      nil, 28, 15, 16, 17, 18
     ]
 
     racc_action_check = [
-      0, 1, 25, 0, 0, 1, 0, 0, 1, 6,
-      7, 14, 6, 6, 15,     6,     6, 15, 15, 17,
-      15,    15,    17,    17,    20,    17,    17,    20,    20,    27,
-      20,    20,    27,    27,    29,    27,    27,    29,    29,    30,
-      29,    29,    30,    19, nil,    30, 19, 28, 28, 19,
-      26,    28,    23,    26, 22, 23, nil, 22
+      1, 37,    37, 37, 37, 12, 37, 1, 1, 1,
+      1,     6, 25, 25, 6, 6, 6, 6, 0, 29,
+      6,     0,     0, 0, 0, 36, 7, 0, 36, 36,
+      36,    36,    20,    14,    36,    20,    20, 20, 20, 18,
+      13,    20,    18,    18,    18,    18,    31, nil,    18, 31,
+      31,    31,    31,    32, nil, 31, 32, 32, 32, 32,
+      15, nil, 32, 15, 15, 15, 15, 16, nil, 15,
+      16,    16, 16, 16, 17, nil, 16, 17, 17, 17,
+      17,    34, nil, 17, nil, 34, 34, 34, 34, 30,
+      24,    24, 30, 30, 30, 30, 19, 19, 19, 19,
+      nil, 19, 35, 35, 35, 35
     ]
 
     racc_action_pointer = [
-      -2, 1, nil, nil, nil, nil, 7, 1, nil, nil,
-      nil, nil, nil,   nil, 11, 12, nil, 17, nil, 39,
-      22,   nil, 50, 48, nil, -1, 46, 27, 44, 32,
-      35,   nil
+      16, 0,   nil, nil, nil, nil, 9, 15, nil, nil,
+      nil, nil, -1, 34, 33, 58, 65, 72, 37, 89,
+      30, nil, nil, nil, 81, 3, nil, nil, nil, 16,
+      85, 44, 51, nil, 78, 95, 23, -6, nil
     ]
 
     racc_action_default = [
-      -10, -18, -1, -2, -3, -4, -10, -18, -12, -13,
-      -14, -15, -16, -17, -18, -10, -8, -10, -11, -18,
-      -10,    32, -7, -9, -5, -4, -18, -10, -18, -10,
-      -18,    -6
+      -1, -28, -2, -3, -4, -5, -1, -28, -20, -21,
+      -23, -25, -28,   -28, -28, -1, -1, -1, -1, -28,
+      -1, -26, -27,    39, -15, -16, -17, -18, -7, -28,
+      -12, -1, -1, -13, -28, -11, -1, -28, -9
     ]
 
     racc_goto_table = [
-      1, 25, nil,   nil, nil, nil, 19, nil, nil, nil,
-      nil, nil, nil, nil, nil, 22, nil, 23, nil, nil,
-      26, nil, nil, nil, nil, nil, nil, 28, nil, 30
+      1, 29, 32,   nil, nil, nil, 19, nil, nil, nil,
+      nil, nil, nil, nil, nil, 24, 25, 26, 27, nil,
+      30, nil, nil, nil, nil, nil, nil, nil, nil, nil,
+      nil, 34, 35, nil, nil, nil, 37
     ]
 
     racc_goto_check = [
-      1, 5, nil, nil, nil, nil, 1, nil, nil, nil,
-      nil, nil, nil, nil, nil, 1, nil, 1, nil, nil,
-      1, nil, nil, nil, nil,   nil, nil, 1, nil, 1
+      1, 6, 7, nil, nil, nil, 1, nil, nil, nil,
+      nil, nil, nil, nil, nil, 1,     1, 1, 1, nil,
+      1, nil,   nil, nil, nil, nil, nil, nil, nil, nil,
+      nil, 1, 1, nil, nil, nil, 1
     ]
 
     racc_goto_pointer = [
-      nil, 0, nil, nil, nil, -19, nil, nil, nil, nil,
-      nil
+      nil, 0, nil, nil, nil, nil, -19, -28, nil, nil
     ]
 
     racc_goto_default = [
-      nil, nil, 2, 3, 4, 5, 15, 17, 8, 9,
-      10
+      nil, nil, 2, 3, 4, 5, nil, nil, 8, 9
     ]
 
     racc_reduce_table = [
       0, 0, :racc_error,
-      1, 16, :_reduce_none,
-      1, 16, :_reduce_none,
-      1, 16, :_reduce_none,
-      1, 16, :_reduce_none,
-      3, 18, :_reduce_5,
-      8, 20, :_reduce_6,
-      3, 20, :_reduce_7,
-      1, 21, :_reduce_8,
-      3, 19, :_reduce_9,
+      0, 14, :_reduce_none,
+      1, 14, :_reduce_none,
+      1, 14, :_reduce_none,
+      1, 14, :_reduce_none,
+      1, 14, :_reduce_none,
+      0, 16, :_reduce_none,
+      3, 16, :_reduce_7,
+      0, 18, :_reduce_none,
+      8, 18, :_reduce_9,
       0, 19, :_reduce_none,
-      1, 22, :_reduce_11,
-      1, 17, :_reduce_none,
-      1, 17, :_reduce_none,
-      1, 17, :_reduce_none,
-      1, 24, :_reduce_15,
-      1, 25, :_reduce_16,
-      1, 23, :_reduce_17
+      3, 19, :_reduce_11,
+      0, 20, :_reduce_none,
+      1, 20, :_reduce_13,
+      0, 17, :_reduce_none,
+      3, 17, :_reduce_15,
+      3, 17, :_reduce_16,
+      3, 17, :_reduce_17,
+      3, 17, :_reduce_18,
+      0, 15, :_reduce_none,
+      1, 15, :_reduce_none,
+      1, 15, :_reduce_none,
+      0, 21, :_reduce_none,
+      1, 21, :_reduce_23,
+      0, 22, :_reduce_none,
+      1, 22, :_reduce_25,
+      2, 22, :_reduce_26,
+      2, 22, :_reduce_27
     ]
 
-    racc_reduce_n = 18
+    racc_reduce_n = 28
 
-    racc_shift_n = 32
+    racc_shift_n = 39
 
     racc_token_table = {
       false => 0,
@@ -100,17 +120,15 @@ module AlpacaFormula
       :COMPARISON_OPERATOR => 4,
       :ITEM => 5,
       :DIGIT => 6,
-      :OPERATOR => 7,
-      :LITERAL => 8,
-      :LPAREN => 9,
-      :RPAREN => 10,
-      '*' => 11,
-      '/' => 12,
-      '+' => 13,
-      '-' => 14
+      :PLUS_OPERATOR => 7,
+      :MINUS_OPERATOR => 8,
+      :DEVISION_OPERATOR => 9,
+      :MULTIPLICATION_OPERATOR => 10,
+      :LPAREN => 11,
+      :RPAREN => 12
     }
 
-    racc_nt_base = 15
+    racc_nt_base = 13
 
     racc_use_result_var = false
 
@@ -139,23 +157,20 @@ module AlpacaFormula
       'COMPARISON_OPERATOR',
       'ITEM',
       'DIGIT',
-      'OPERATOR',
-      'LITERAL',
+      'PLUS_OPERATOR',
+      'MINUS_OPERATOR',
+      'DEVISION_OPERATOR',
+      'MULTIPLICATION_OPERATOR',
       'LPAREN',
       'RPAREN',
-      '"*"',
-      '"/"',
-      '"+"',
-      '"-"',
       '$start',
       'expression',
       'terminal',
       'group',
       'calculation',
+      'if_statement',
       'condition',
       'compensation_operator',
-      'operator',
-      'literal',
       'item',
       'digit'
     ].freeze
@@ -174,48 +189,74 @@ module AlpacaFormula
 
     # reduce 4 omitted
 
-    def _reduce_5(val, _values)
+    # reduce 5 omitted
+
+    # reduce 6 omitted
+
+    def _reduce_7(val, _values)
       Nodes::Group.new(val[1])
     end
 
-    def _reduce_6(val, _values)
-      Nodes::If.new(val[2], val[4], val[6])
-    end
-
-    def _reduce_7(val, _values)
-      Nodes::Condition.new(val[0], val[1], val[2])
-    end
-
-    def _reduce_8(val, _values)
-      Nodes::ComparisonOperator.new(val.first)
-    end
+    # reduce 8 omitted
 
     def _reduce_9(val, _values)
-      Nodes::Cat.new(val[0], val[1], val[2])
+      Nodes::If.new(val[2], val[4], val[6])
     end
 
     # reduce 10 omitted
 
     def _reduce_11(val, _values)
-      Nodes::Operator.new(val.first)
+      Nodes::Condition.new(val[1], val[0], val[2])
     end
 
     # reduce 12 omitted
 
-    # reduce 13 omitted
+    def _reduce_13(val, _values)
+      Nodes::ComparisonOperator.new(val.first)
+    end
 
     # reduce 14 omitted
 
     def _reduce_15(val, _values)
-      Nodes::Item.new(val.first)
+      Nodes::PlusOperation.new(val[0], val[2])
     end
 
     def _reduce_16(val, _values)
-      Nodes::Digit.new(val.first)
+      Nodes::MinusOperation.new(val[0], val[2])
     end
 
     def _reduce_17(val, _values)
-      Nodes::Literal.new(val.first)
+      Nodes::DevisionOperation.new(val[0], val[2])
+    end
+
+    def _reduce_18(val, _values)
+      Nodes::MultiplicationOperation.new(val[0], val[2])
+    end
+
+    # reduce 19 omitted
+
+    # reduce 20 omitted
+
+    # reduce 21 omitted
+
+    # reduce 22 omitted
+
+    def _reduce_23(val, _values)
+      Nodes::Item.new(val.first)
+    end
+
+    # reduce 24 omitted
+
+    def _reduce_25(val, _values)
+      Nodes::Digit.new(val.first)
+    end
+
+    def _reduce_26(val, _values)
+      Nodes::Digit.new(val.last)
+    end
+
+    def _reduce_27(val, _values)
+      Nodes::Digit.new("-#{val.last}")
     end
 
     def _reduce_none(val, _values)

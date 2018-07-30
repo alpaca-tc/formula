@@ -33,11 +33,24 @@ module AlpacaFormula
     end
 
     class Binary < Node
-      attr_reader :right, :expression
+      attr_reader :right
 
-      def initialize(left, expression, right)
+      def initialize(left, right)
         super(left)
-        @expression = expression
+        @right = right
+      end
+
+      def children
+        [left, right]
+      end
+    end
+
+    class ConditionOperator < Node
+      attr_reader :operator, :right
+
+      def initialize(operator, left, right)
+        super(left)
+        @operator = operator
         @right = right
       end
 
@@ -91,13 +104,6 @@ module AlpacaFormula
       end
     end
 
-    # FIXME: Operator毎に別クラスに切るべき？そもそもこれ、Terminalなの？
-    class Operator < Terminal
-      def type
-        :OPERATOR
-      end
-    end
-
     # FIXME: ComparisonOperator毎に別クラスに切るべき？そもそもこれ、Terminalなの？
     class ComparisonOperator < Terminal
       def type
@@ -108,13 +114,31 @@ module AlpacaFormula
     ##
     # Binary classes
     ##
-    class Cat < Binary
+    class MultiplicationOperation < Binary
       def type
-        :CAT
+        :MULTIPLICATION_OPERATION
       end
     end
 
-    class Condition < Binary
+    class DevisionOperation < Binary
+      def type
+        :DEVISION_OPERATION
+      end
+    end
+
+    class MinusOperation < Binary
+      def type
+        :MINUS_OPERATION
+      end
+    end
+
+    class PlusOperation < Binary
+      def type
+        :PLUS_OPERATION
+      end
+    end
+
+    class Condition < ConditionOperator
       def type
         :CONDITION
       end

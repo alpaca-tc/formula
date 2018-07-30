@@ -20,7 +20,7 @@ module AlpacaFormula
 
       loop do
         token = @scanner.next_token
-        return if @scanner.eos?
+        return if token.nil?
 
         return token unless skip_token?(token)
       end

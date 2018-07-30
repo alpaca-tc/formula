@@ -20,19 +20,20 @@ module AlpacaFormula
       send("visit_#{node.type}", node)
     end
 
-    def visit_CAT(node)
-      case node.expression.left
-      when '/'
-        visit(node.left) / visit(node.right)
-      when '*'
-        visit(node.left) * visit(node.right)
-      when '+'
-        visit(node.left) + visit(node.right)
-      when '-'
-        visit(node.left) - visit(node.right)
-      else
-        raise NotImplementedError, "unknown expression given (#{node.expression.left})"
-      end
+    def visit_PLUS_OPERATION(node)
+      visit(node.left) + visit(node.right)
+    end
+
+    def visit_MINUS_OPERATION(node)
+      visit(node.left) - visit(node.right)
+    end
+
+    def visit_DEVISION_OPERATION(node)
+      visit(node.left) / visit(node.right)
+    end
+
+    def visit_MULTIPLICATION_OPERATION(node)
+      visit(node.left) * visit(node.right)
     end
 
     def visit_GROUP(node)
@@ -59,7 +60,7 @@ module AlpacaFormula
       left = visit(node.left)
       right = visit(node.right)
 
-      case node.expression.left
+      case node.operator.left
       when '<'
         left < right
       when '>'
@@ -73,7 +74,7 @@ module AlpacaFormula
       when '!='
         left != right
       else
-        raise NotImplementedError, "unknown expression given (#{node.expression.left})"
+        raise NotImplementedError, "unknown expression given (#{node.operator.left})"
       end
     end
   end
