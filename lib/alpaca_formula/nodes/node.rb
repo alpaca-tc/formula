@@ -17,16 +17,9 @@ module AlpacaFormula
       def type
         raise NotImplementedError
       end
-
-      def terminal?
-        false
-      end
     end
 
     class Terminal < Node
-      def terminal?
-        true
-      end
     end
 
     class Branch < Node
