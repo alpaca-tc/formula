@@ -35,9 +35,11 @@ RSpec.describe AlpacaFormula::Scanner do
         it do
           is_expected.to eq(
             [
-              [:DIGIT, '+1'],
-              [:OPERATOR, '+'],
-              [:DIGIT, '-2']
+              [:PLUS_OPERATOR, '+'],
+              [:DIGIT, '1'],
+              [:PLUS_OPERATOR, '+'],
+              [:MINUS_OPERATOR, '-'],
+              [:DIGIT, '2']
             ]
           )
         end
@@ -50,13 +52,14 @@ RSpec.describe AlpacaFormula::Scanner do
             [
               [:DIGIT, '1.0'],
               [:SPACE, ' '],
-              [:OPERATOR, '+'],
+              [:PLUS_OPERATOR, '+'],
               [:SPACE, ' '],
               [:DIGIT, '0.12345'],
               [:SPACE, ' '],
-              [:OPERATOR, '-'],
+              [:MINUS_OPERATOR, '-'],
               [:SPACE, ' '],
-              [:DIGIT, '-1.0']
+              [:MINUS_OPERATOR, '-'],
+              [:DIGIT, '1.0']
             ]
           )
         end
@@ -70,19 +73,19 @@ RSpec.describe AlpacaFormula::Scanner do
             [
               [:DIGIT, '1'],
               [:SPACE, ' '],
-              [:OPERATOR, '+'],
+              [:PLUS_OPERATOR, '+'],
               [:SPACE, ' '],
               [:DIGIT, '2'],
               [:SPACE, ' '],
-              [:OPERATOR, '-'],
+              [:MINUS_OPERATOR, '-'],
               [:SPACE, ' '],
               [:DIGIT, '3'],
               [:SPACE, ' '],
-              [:OPERATOR, '*'],
+              [:MULTIPLICATION_OPERATOR, '*'],
               [:SPACE, ' '],
               [:DIGIT, '123456789'],
               [:SPACE, ' '],
-              [:OPERATOR, '/'],
+              [:DEVISION_OPERATOR, '/'],
               [:SPACE, ' '],
               [:DIGIT, '1']
             ]
@@ -99,7 +102,7 @@ RSpec.describe AlpacaFormula::Scanner do
               [:LPAREN, '('],
               [:DIGIT, '1'],
               [:SPACE, ' '],
-              [:OPERATOR, '+'],
+              [:PLUS_OPERATOR, '+'],
               [:SPACE, ' '],
               [:DIGIT, '2'],
               [:RPAREN, ')']
@@ -116,12 +119,14 @@ RSpec.describe AlpacaFormula::Scanner do
             [
               [:LPAREN, '('],
               [:DIGIT, '1'],
-              [:OPERATOR, '+'],
-              [:DIGIT, '+2'],
-              [:OPERATOR, '-'],
-              [:DIGIT, '-0'],
+              [:PLUS_OPERATOR, '+'],
+              [:PLUS_OPERATOR, '+'],
+              [:DIGIT, '2'],
+              [:MINUS_OPERATOR, '-'],
+              [:MINUS_OPERATOR, '-'],
+              [:DIGIT, '0'],
               [:RPAREN, ')'],
-              [:OPERATOR, '/'],
+              [:DEVISION_OPERATOR, '/'],
               [:DIGIT, '3']
             ]
           )

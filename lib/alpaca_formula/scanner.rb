@@ -33,11 +33,17 @@ module AlpacaFormula
         [:LPAREN, @string_scanner.matched]
       elsif @string_scanner.scan(/(?<!\\)\)/)
         [:RPAREN, @string_scanner.matched]
-      elsif @string_scanner.scan(/(?:(?:[+\-])(?!\d)|[*\/])/)
-        [:OPERATOR, @string_scanner.matched]
+      elsif @string_scanner.scan(/\+/)
+        [:PLUS_OPERATOR, @string_scanner.matched]
+      elsif @string_scanner.scan(/-/)
+        [:MINUS_OPERATOR, @string_scanner.matched]
+      elsif @string_scanner.scan(%r{/})
+        [:DEVISION_OPERATOR, @string_scanner.matched]
+      elsif @string_scanner.scan(/\*/)
+        [:MULTIPLICATION_OPERATOR, @string_scanner.matched]
       elsif @string_scanner.scan(/(==|!=|>|<|>=|<=)/)
         [:COMPARISON_OPERATOR, @string_scanner.matched]
-      elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
+      elsif @string_scanner.scan(/\d+(?:\.\d*)?/)
         [:DIGIT, @string_scanner.matched]
       elsif @string_scanner.scan(/\s+/)
         [:SPACE, @string_scanner.matched]
