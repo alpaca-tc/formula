@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable all
 module AlpacaFormula
   class Scanner
     def scan_setup(str)
@@ -8,14 +9,6 @@ module AlpacaFormula
 
     def eos?
       @string_scanner.eos?
-    end
-
-    def pos
-      @string_scanner.pos
-    end
-
-    def pre_match
-      @string_scanner.pre_match
     end
 
     def next_token
@@ -46,12 +39,12 @@ module AlpacaFormula
         [:COMPARISON_OPERATOR, @string_scanner.matched]
       elsif @string_scanner.scan(/(?:[+\-])?\d+(?:\.\d*)?/)
         [:DIGIT, @string_scanner.matched]
-      elsif @string_scanner.scan(/(?:[\w%\-~!$&'*+,;=@]|\\:|\\\(|\\\))+/)
-        [:LITERAL, @string_scanner.matched.tr('\\', '')]
+      elsif @string_scanner.scan(/\s+/)
+        [:SPACE, @string_scanner.matched]
       elsif @string_scanner.scan(/./)
-        # any char
         [:LITERAL, @string_scanner.matched]
       end
     end
   end
 end
+# rubocop:enable all

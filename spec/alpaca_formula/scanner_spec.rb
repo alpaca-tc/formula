@@ -8,6 +8,7 @@ RSpec.describe AlpacaFormula::Scanner do
       subject { tokens }
       let(:instance) { described_class.new }
 
+      # rubocop:disable Lint/AssignmentInCondition
       def tokens
         result = []
 
@@ -17,6 +18,7 @@ RSpec.describe AlpacaFormula::Scanner do
 
         result
       end
+      # rubocop:enable Lint/AssignmentInCondition
 
       before do
         instance.scan_setup(text)
@@ -47,13 +49,13 @@ RSpec.describe AlpacaFormula::Scanner do
           is_expected.to eq(
             [
               [:DIGIT, '1.0'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '+'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '0.12345'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '-'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '-1.0']
             ]
           )
@@ -67,21 +69,21 @@ RSpec.describe AlpacaFormula::Scanner do
           is_expected.to eq(
             [
               [:DIGIT, '1'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '+'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '2'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '-'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '3'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '*'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '123456789'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '/'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '1']
             ]
           )
@@ -96,9 +98,9 @@ RSpec.describe AlpacaFormula::Scanner do
             [
               [:LPAREN, '('],
               [:DIGIT, '1'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:OPERATOR, '+'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '2'],
               [:RPAREN, ')']
             ]
@@ -138,7 +140,7 @@ RSpec.describe AlpacaFormula::Scanner do
         end
       end
 
-      fcontext 'given IF' do
+      context 'given IF' do
         let(:text) { 'IF(基本給 > 0, 1.0, 2.0)' }
 
         it do
@@ -147,15 +149,15 @@ RSpec.describe AlpacaFormula::Scanner do
               [:IF, 'IF'],
               [:LPAREN, '('],
               [:ITEM, '基本給'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:COMPARISON_OPERATOR, '>'],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '0'],
               [:DELIMITER, ','],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '1.0'],
               [:DELIMITER, ','],
-              [:LITERAL, ' '],
+              [:SPACE, ' '],
               [:DIGIT, '2.0'],
               [:RPAREN, ')']
             ]

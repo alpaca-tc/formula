@@ -20,16 +20,17 @@ module AlpacaFormula
 
       loop do
         token = @scanner.next_token
-        return if token.nil?
+        return if @scanner.eos?
+
         return token unless skip_token?(token)
       end
     end
 
     private
 
-    def skip_token?(token)
-      # 空白はいらないので消す
-      token[0] == :LITERAL && token[1] == ' '
+    # 空白はいらないので消す
+    def skip_token?((symbol, _value))
+      symbol == :SPACE
     end
   end
 end
